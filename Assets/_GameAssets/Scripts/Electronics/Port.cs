@@ -4,47 +4,76 @@ using UnityEngine;
 
 namespace Electronics.Devices.Ports
 {
-    [CreateAssetMenu(fileName = "Electronics", menuName = "Port")]
-    public class Port : ScriptableObject
+    public class Port : MonoBehaviour
     {
-        public string portName;
-        public List<Port> connectablePortsTo;
-        public List<Port> connectablePortsFrom; //Not sure if the "connectablePortsFrom" connectors will be listed in each port.
+        [SerializeField] private PortSO _portSO;
+        [SerializeField] private List<Port> _connectedPorts;
 
-        public List<Port> connectedPorts;
-        
-        public SpriteRenderer portSprite;
+        [SerializeField] private SpriteRenderer _portSprite;
 
-        public PortState currentPortState;
-        public void ConnectToThisPort(Port portToConnect)
+        [SerializeField] private PortState _currentPortState;
+
+        public PortSO PortSO { get => _portSO; set => _portSO = value; }
+        public List<Port> ConnectedPorts { get => _connectedPorts; set => _connectedPorts = value; }
+        public SpriteRenderer PortSprite { get => _portSprite; set => _portSprite = value; }
+        public PortState CurrentPortState { get => _currentPortState; set => _currentPortState = value; }
+
+        public void ConnectToThisPort(Port portToConnect, PortSO portSOToConnect)
         {
-            switch (currentPortState)
+            switch (CurrentPortState)
             {
                 case PortState.IDLE_CONNECTABLE:
-                    if (connectablePortsTo.Contains(portToConnect))
-                    {
-                        UpdatePortColor(PortState.CONNECTED);
-                        connectedPorts.Add(portToConnect);
-                        portToConnect.UpdatePortColor(PortState.CONNECTED);
-                        portToConnect.connectedPorts.Add(this);
-                    }
+                    ConnectPort(portToConnect, portSOToConnect);
+
+                    break;
+                case PortState.IDLE_UNCONNECTABLE:
+                    break;
+                case PortState.CONNECTED:
+                    //If disconnectable by connection trial we can handle this code here.
                     break;
             }
         }
 
+        private void ConnectPort(Port portToConnect, PortSO portSOToConnect)
+        {
+            switch (portSOToConnect.ConnectionRestriction)
+            {
+                case ConnectionRestrictionType.Port:
+                    if (PortSO.ConnectablePorts.Contains(portSOToConnect))
+                        ApplyPortConnection(portToConnect);
+                    break;
+                case ConnectionRestrictionType.Portal:
+                    if (PortSO.ConnectablePortals.Contains(portSOToConnect.Portal))
+                        ApplyPortConnection(portToConnect);
+                    break;
+                case ConnectionRestrictionType.Device:
+                    if (PortSO.ConnectableDevices.Contains(portSOToConnect.Device))
+                        ApplyPortConnection(portToConnect);
+                    break;
+            }
+        }
+
+        private void ApplyPortConnection(Port portToConnect)
+        {
+            UpdatePortColor(PortState.CONNECTED);
+            ConnectedPorts.Add(portToConnect);
+            portToConnect.UpdatePortColor(PortState.CONNECTED);
+            portToConnect.ConnectedPorts.Add(this);
+        }
+
         public void UpdatePortColor(PortState state)
         {
-            currentPortState = state;
-            switch (currentPortState)
+            CurrentPortState = state;
+            switch (CurrentPortState)
             {
                 case PortState.IDLE_CONNECTABLE:
-                    portSprite.color = Color.yellow;
+                    PortSprite.color = Color.yellow;
                     break;
                 case PortState.IDLE_UNCONNECTABLE:
-                    portSprite.color = Color.red;
+                    PortSprite.color = Color.red;
                     break;
                 case PortState.CONNECTED:
-                    portSprite.color = Color.green;
+                    PortSprite.color = Color.green;
                     break;
             }
         }

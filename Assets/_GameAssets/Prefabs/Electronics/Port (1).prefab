@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3359275333317247278}
   - component: {fileID: 3359275333317247281}
   - component: {fileID: 3359275333317247279}
+  - component: {fileID: 2573115967817768004}
   - component: {fileID: 1295746031}
   - component: {fileID: 1295746033}
   m_Layer: 0
@@ -98,6 +99,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5feb9af1c309884985910658fe33ecb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2573115967817768004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3359275333317247280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d71ef033882f02f4a82ff2cc1034f8d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  portName: 
+  portSO: {fileID: 0}
+  connectedPorts: []
+  portSprite: {fileID: 0}
+  currentPortState: 0
 --- !u!50 &1295746031
 Rigidbody2D:
   serializedVersion: 4
