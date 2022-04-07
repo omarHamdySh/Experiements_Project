@@ -7,23 +7,33 @@ namespace Electronics.Devices
 {
     public class Portal : MonoBehaviour
     {
-        [SerializeField]private List<Port> _ports;
-        public List<Port> Ports { get => _ports; set => _ports = value; }
+        [SerializeField] private Device _deviceGameObject;
+        [SerializeField] private List<Port> _portsGameObjects;
+        [SerializeField] private PortalSO _portalSO;
+        public List<Port> PortsGameObjects { get => _portsGameObjects; set => _portsGameObjects = value; }
+        public Device DeviceGameObject { get => _deviceGameObject; set => _deviceGameObject = value; }
+        public PortalSO PortalSO { get => _portalSO; set => _portalSO = value; }
+
 
         [ContextMenu("Fetch Ports")]
         public void FetchPorts()
         {
-            Ports.Clear();
+            PortsGameObjects.Clear();
             foreach (var port in transform.GetComponentsInChildren<Port>())
             {
-                Ports.Add(port);
+                PortsGameObjects.Add(port);
+                port.PortalGameObject = this;
+
+                if (DeviceGameObject)
+                    port.DeviceGameObject = this.DeviceGameObject;
             }
         }
 
         [ContextMenu("Clear Portal")]
         public void ClearPortal()
         {
-            Ports.Clear();
+            PortsGameObjects.Clear();
+            DeviceGameObject = null;
         }
     }
 }

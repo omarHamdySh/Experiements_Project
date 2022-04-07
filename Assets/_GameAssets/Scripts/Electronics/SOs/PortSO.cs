@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/// <summary>
+/// Ports are many to many relationship, can accept a specific number of conncetions according to its specs.
+/// Ports can be connceted according to various conncetions restrictions, restrictions can be by device, by portal, or by specific ports.
+/// </summary>
+
 [CreateAssetMenu(fileName = "Port", menuName = "Electronics/Port")]
 public class PortSO : ScriptableObject
 {

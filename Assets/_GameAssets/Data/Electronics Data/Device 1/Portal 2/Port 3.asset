@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: Port 3
   m_EditorClassIdentifier: 
   _portName: 
-  _connectionRestriction: 0
-  _connectableDevices: []
+  _connectionRestriction: 2
+  _connectableDevices:
+  - {fileID: 11400000, guid: 49a53f51843b07d4882e98751ae75f6c, type: 2}
   _connectablePortals: []
   _connectablePorts: []
-  _portal: {fileID: 0}
-  _device: {fileID: 0}
+  _portal: {fileID: 11400000, guid: 8a2decee5dfe7a347952e0ed89628160, type: 2}
+  _device: {fileID: 11400000, guid: 49a53f51843b07d4882e98751ae75f6c, type: 2}

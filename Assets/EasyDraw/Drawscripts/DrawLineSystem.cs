@@ -91,9 +91,6 @@ public class DrawLineSystem : Singleton<DrawLineSystem>
     }
 
 
-
-
-
     private void UpdateLine(Vector2 newpos)
     {
         touchPositions.Add(newpos);

@@ -12,3 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfed55035176b94bac5322ce803cdd3, type: 3}
   m_Name: Portal 1
   m_EditorClassIdentifier: 
+  _ports:
+  - {fileID: 11400000, guid: 0b7aebdaddc92974096a3d324de59698, type: 2}
+  - {fileID: 11400000, guid: aa663267e7f5b444fbd1d9248053c1ee, type: 2}
+  - {fileID: 11400000, guid: f1b0bb4cfeaa32d49854269240d1347c, type: 2}

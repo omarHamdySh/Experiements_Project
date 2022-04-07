@@ -10,15 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aff7d77b84a706d4283daecd8351c7c8, type: 3}
-  m_Name: Port 4
+  m_Name: Port 3
   m_EditorClassIdentifier: 
   _portName: 
   _connectionRestriction: 0
-  _connectableDevices:
-  - {fileID: 11400000, guid: 49a53f51843b07d4882e98751ae75f6c, type: 2}
+  _connectableDevices: []
   _connectablePortals: []
   _connectablePorts:
-  - {fileID: 11400000, guid: 787cc75c4dcdf8e40a4666447a58682c, type: 2}
-  - {fileID: 11400000, guid: b8cb67bf674b7ed4182d4ebd78a69ed0, type: 2}
-  _portal: {fileID: 11400000, guid: 8a2decee5dfe7a347952e0ed89628160, type: 2}
-  _device: {fileID: 11400000, guid: 49a53f51843b07d4882e98751ae75f6c, type: 2}
+  - {fileID: 11400000, guid: ddc81d12a66ad174baa061a95c989131, type: 2}
+  _portal: {fileID: 11400000, guid: 0f71558bd78686f4cad4867c765c0c67, type: 2}
+  _device: {fileID: 11400000, guid: 1fd5589c043d8d64c9954cafefd4c828, type: 2}

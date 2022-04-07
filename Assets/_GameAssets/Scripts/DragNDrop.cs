@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class DragNDrop : MonoBehaviour
 {
-    bool isDraggable;
-    bool isDragging;
+    public bool isDraggable;
+    public bool isDragging;
     Collider2D objectCollider;
     Vector2 mousePosition;
     // Start is called before the first frame update
@@ -13,13 +13,14 @@ public class DragNDrop : MonoBehaviour
     {
         objectCollider = GetComponent<Collider2D>();
         isDraggable = false;
-        isDragging = false;
     }
 
     // Update is called once per frame
     void Update()
     {
         DragAndDrop();
+        if (isDragging)
+            FollowMousePosition();
     }
     private void OnMouseDown()
     {
@@ -33,10 +34,16 @@ public class DragNDrop : MonoBehaviour
 
     private void OnMouseDrag()
     {
-        this.transform.position = mousePosition;
+        FollowMousePosition();
     }
+
     void DragAndDrop()
     {
          mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    }
+
+    void FollowMousePosition()
+    {
+        this.transform.position = mousePosition;
     }
 }
