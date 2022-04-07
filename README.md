@@ -1,1 +1,1 @@
-# PartTimeProject
+Electronics Educational App Task
